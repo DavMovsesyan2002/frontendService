@@ -1,24 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import MapComponent from "./component/map";
+import TableComponent from "./component/table";
+import FormDelivery from "./component/formDelivery";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div>
+          <div className="container">
+              <TableComponent />
+              <MapComponent />
+          </div>
+          <FormDelivery />
+      </div>
   );
 }
 
