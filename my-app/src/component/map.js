@@ -7,7 +7,7 @@ const MapComponent = () => {
     const fillBlueOptions = { fillColor: 'blue' }
     const limeOptions = { color: 'lime' }
     const redOptions = { color: 'red' }
-    const {zoom, setZoom, center,routeFrom, setRouteFrom, routeTo, setRouteTo, polyline, setPolyline, multiPolyline, setMultiPolyline} = useMap()
+    const {zoom, center,routeFrom, routeTo, polyline, multiPolyline} = useMap()
 
     return(
             <div className='column'>

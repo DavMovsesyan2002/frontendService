@@ -47,10 +47,7 @@ export const mapReducer = (state = defaultState, action) => {
     switch (action.type){
         case TO:
             return {...state, dataSource: state.dataSource.map(obj => {
-                    console.log(action.payload,"action.payload.polyline",obj.id)
-
                     if (obj.id === action.payload.id) {
-                        console.log(action.payload,"action.payload.polyline44444")
                         return {...obj, to: action.payload.routeTo,nameCityTo: action.payload.cityTo.city,polyline: action.payload.polyline, zoom: 7};
                     }
                     return obj;

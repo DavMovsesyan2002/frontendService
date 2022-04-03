@@ -70,6 +70,7 @@ const FormDelivery = () => {
                 <Input className='mt-10 w-200' placeholder="размер" onChange={handleChange} value={weight} type='number' />
                 <Button className='mt-10 w-200' type="primary" disabled={disabledButton} onClick={handleFormSubmit}>Рассчитать</Button>
             </div>
+            <div className='mt-10 color-red'>{error && error} </div>
             <div className='mt-10'>стоимость: {price} </div>
             <div className='mt-10'>дата доставки: {date}</div>
             <div className='mt-10'>размер: {weight}</div>

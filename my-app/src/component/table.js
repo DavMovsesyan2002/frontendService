@@ -13,7 +13,7 @@ const TableComponent = ( ) => {
     const [selectOptionData,setSelectOptionData] = useState(mapData.selectOptionData)
     const [rowOfTableKey, setRowOfTableKey] = useState(1)
     const [city, setCity] = useState([{id:1,city: "London"},{id: 2,city: "London"}]);
-   const {zoom, setZoom, center,routeFrom, setRouteFrom, routeTo, setRouteTo, polyline, setPolyline, multiPolyline, setMultiPolyline} = useMap()
+    const {setZoom, setRouteFrom, routeTo, setRouteTo, polyline, setPolyline, setMultiPolyline} = useMap()
 
     const onClickRow = (record) => {
         return {
@@ -28,12 +28,7 @@ const TableComponent = ( ) => {
         };
     }
 
-    const handleConfirm = (e) => {
-        e.stopPropagation();
-    }
-
     const handleChangeTo = (value) => {
-       console.log(value)
         let newArr = city.map((item) => {
             if (rowOfTableKey == item.id) {
                 return { ...item, city: value };
@@ -43,11 +38,6 @@ const TableComponent = ( ) => {
         });
         setCity(newArr);
    }
-
-   useEffect(() => {
-       console.log(city,"city")
-
-   },[city])
 
    const columnsData = [
         {
@@ -77,7 +67,7 @@ const TableComponent = ( ) => {
             dataIndex: 'toRoute',
             key: 'toRoute',
             render: (text, record) => (
-                <Space size="middle" onClick={handleConfirm}>
+                <Space size="middle">
                     <Select defaultValue="london" className='select-container' onChange={handleChangeTo}>
                         {selectOptionData.map((item) =>{
                                 return <Option key={item.key} value={item.name}>{item.name}</Option>
@@ -99,13 +89,10 @@ const TableComponent = ( ) => {
 
     useEffect(() => {
             if(city[rowOfTableKey - 1].city === "Brighton") {
-                console.log(city[rowOfTableKey - 1].city,"city[rowOfTableKey].city");
                 setZoom(7);
                 setRouteTo([50.869, -0.09]);
                 setPolyline([[50.869, -0.09], [51.51, -0.1], [51.51, -0.12]])
             }else {
-                console.log(city[rowOfTableKey - 1].city,"mtav bozi mej");
-
                 if (Number(rowOfTableKey) === 1) {
                     setRouteTo([51.500, -0.09])
                     setPolyline([[51.501, -0.09], [51.51, -0.1], [51.51, -0.12],])
